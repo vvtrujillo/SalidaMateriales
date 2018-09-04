@@ -63,7 +63,6 @@ namespace SalidaMateriales.Formularios
             txtArticuloNombre.Text = String.Empty;
             txtCentroCostoDescrip.Text = String.Empty;
 
-
             strIdArticulo = "";
             strTipoArticuloSel = "";
             strCodigoArticuloSel = "";
@@ -86,8 +85,8 @@ namespace SalidaMateriales.Formularios
 
             strTipoMaterial = "";
 
-            lblContMatPri.Text = String.Empty;
-            lblContadorEnvases.Text = String.Empty;
+            lblContMatPri.Text = "0";
+            lblContadorEnvases.Text = "0";
         }
 
         private void SalidaMateriales_Load(object sender, EventArgs e)
