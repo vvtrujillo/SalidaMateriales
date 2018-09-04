@@ -62,11 +62,17 @@
             this.tsbGrabarSM = new System.Windows.Forms.ToolStripButton();
             this.lblTitulo = new System.Windows.Forms.ToolStripLabel();
             this.lblSumPedido = new System.Windows.Forms.Label();
-            this.txtSumCant = new System.Windows.Forms.TextBox();
+            this.lblContMatPri = new System.Windows.Forms.Label();
+            this.gbContadorMP = new System.Windows.Forms.GroupBox();
+            this.gbContadorEnv = new System.Windows.Forms.GroupBox();
+            this.lblTotalPedidoEnv = new System.Windows.Forms.Label();
+            this.lblContadorEnvases = new System.Windows.Forms.Label();
             this.gbEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMat)).BeginInit();
             this.gbDetalleSolicitud.SuspendLayout();
             this.tsSalidaMateriales.SuspendLayout();
+            this.gbContadorMP.SuspendLayout();
+            this.gbContadorEnv.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCodPlanta
@@ -409,28 +415,69 @@
             // lblSumPedido
             // 
             this.lblSumPedido.AutoSize = true;
-            this.lblSumPedido.Location = new System.Drawing.Point(48, 520);
+            this.lblSumPedido.Location = new System.Drawing.Point(6, 21);
             this.lblSumPedido.Name = "lblSumPedido";
             this.lblSumPedido.Size = new System.Drawing.Size(81, 17);
             this.lblSumPedido.TabIndex = 197;
             this.lblSumPedido.Text = "Total Pedido";
             // 
-            // txtSumCant
+            // lblContMatPri
             // 
-            this.txtSumCant.Enabled = false;
-            this.txtSumCant.Location = new System.Drawing.Point(135, 517);
-            this.txtSumCant.Name = "txtSumCant";
-            this.txtSumCant.Size = new System.Drawing.Size(88, 25);
-            this.txtSumCant.TabIndex = 196;
+            this.lblContMatPri.AutoSize = true;
+            this.lblContMatPri.Location = new System.Drawing.Point(97, 21);
+            this.lblContMatPri.Name = "lblContMatPri";
+            this.lblContMatPri.Size = new System.Drawing.Size(15, 17);
+            this.lblContMatPri.TabIndex = 198;
+            this.lblContMatPri.Text = "0";
+            // 
+            // gbContadorMP
+            // 
+            this.gbContadorMP.Controls.Add(this.lblSumPedido);
+            this.gbContadorMP.Controls.Add(this.lblContMatPri);
+            this.gbContadorMP.Location = new System.Drawing.Point(46, 517);
+            this.gbContadorMP.Name = "gbContadorMP";
+            this.gbContadorMP.Size = new System.Drawing.Size(156, 82);
+            this.gbContadorMP.TabIndex = 199;
+            this.gbContadorMP.TabStop = false;
+            this.gbContadorMP.Text = "Materias Primas";
+            // 
+            // gbContadorEnv
+            // 
+            this.gbContadorEnv.Controls.Add(this.lblTotalPedidoEnv);
+            this.gbContadorEnv.Controls.Add(this.lblContadorEnvases);
+            this.gbContadorEnv.Location = new System.Drawing.Point(228, 517);
+            this.gbContadorEnv.Name = "gbContadorEnv";
+            this.gbContadorEnv.Size = new System.Drawing.Size(156, 82);
+            this.gbContadorEnv.TabIndex = 200;
+            this.gbContadorEnv.TabStop = false;
+            this.gbContadorEnv.Text = "Envases";
+            // 
+            // lblTotalPedidoEnv
+            // 
+            this.lblTotalPedidoEnv.AutoSize = true;
+            this.lblTotalPedidoEnv.Location = new System.Drawing.Point(6, 21);
+            this.lblTotalPedidoEnv.Name = "lblTotalPedidoEnv";
+            this.lblTotalPedidoEnv.Size = new System.Drawing.Size(81, 17);
+            this.lblTotalPedidoEnv.TabIndex = 197;
+            this.lblTotalPedidoEnv.Text = "Total Pedido";
+            // 
+            // lblContadorEnvases
+            // 
+            this.lblContadorEnvases.AutoSize = true;
+            this.lblContadorEnvases.Location = new System.Drawing.Point(97, 21);
+            this.lblContadorEnvases.Name = "lblContadorEnvases";
+            this.lblContadorEnvases.Size = new System.Drawing.Size(15, 17);
+            this.lblContadorEnvases.TabIndex = 198;
+            this.lblContadorEnvases.Text = "0";
             // 
             // fSalidaMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(816, 569);
-            this.Controls.Add(this.lblSumPedido);
-            this.Controls.Add(this.txtSumCant);
+            this.ClientSize = new System.Drawing.Size(816, 611);
+            this.Controls.Add(this.gbContadorEnv);
+            this.Controls.Add(this.gbContadorMP);
             this.Controls.Add(this.gbDetalleSolicitud);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
@@ -449,6 +496,10 @@
             this.gbDetalleSolicitud.PerformLayout();
             this.tsSalidaMateriales.ResumeLayout(false);
             this.tsSalidaMateriales.PerformLayout();
+            this.gbContadorMP.ResumeLayout(false);
+            this.gbContadorMP.PerformLayout();
+            this.gbContadorEnv.ResumeLayout(false);
+            this.gbContadorEnv.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,6 +537,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cant_articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_material;
         private System.Windows.Forms.Label lblSumPedido;
-        private System.Windows.Forms.TextBox txtSumCant;
+        private System.Windows.Forms.Label lblContMatPri;
+        private System.Windows.Forms.GroupBox gbContadorMP;
+        private System.Windows.Forms.GroupBox gbContadorEnv;
+        private System.Windows.Forms.Label lblTotalPedidoEnv;
+        private System.Windows.Forms.Label lblContadorEnvases;
     }
 }

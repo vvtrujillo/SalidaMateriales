@@ -85,6 +85,9 @@ namespace SalidaMateriales.Formularios
             txtPlantaSol.Text = String.Empty;
 
             strTipoMaterial = "";
+
+            lblContMatPri.Text = String.Empty;
+            lblContadorEnvases.Text = String.Empty;
         }
 
         private void SalidaMateriales_Load(object sender, EventArgs e)
@@ -475,14 +478,23 @@ namespace SalidaMateriales.Formularios
 
         private void SumaCantidades()
         {
-            int Suma = 0;
+            int SumaMP = 0;
+            int SumaE = 0;
+
             foreach (DataGridViewRow row in dgSalidaMat.Rows)
             {
-                Suma += (int)(Convert.ToInt32(row.Cells["cant_articulo"].Value));
+                if(Convert.ToString(row.Cells["tipo_material"].Value)=="MP")
+                {
+                    SumaMP += (int)(Convert.ToInt32(row.Cells["cant_articulo"].Value));                    
+                }
+                else if (Convert.ToString(row.Cells["tipo_material"].Value)=="E")
+                {
+                    SumaE += (int)(Convert.ToInt32(row.Cells["cant_articulo"].Value));                    
+                }                
             }
 
-            txtSumCant.Text = Convert.ToString(Suma);
+            lblContMatPri.Text = Convert.ToString(SumaMP);
+            lblContadorEnvases.Text = Convert.ToString(SumaE);
         }
-       
     }
 }
