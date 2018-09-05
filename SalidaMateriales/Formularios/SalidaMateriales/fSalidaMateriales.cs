@@ -61,6 +61,7 @@ namespace SalidaMateriales.Formularios
         {
             cmbTipoArticulo.SelectedIndex = -1;
             txtArticuloNombre.Text = String.Empty;
+            txtUnidadMedida.Text = String.Empty;
             txtCentroCostoDescrip.Text = String.Empty;
 
             strIdArticulo = "";
@@ -123,7 +124,7 @@ namespace SalidaMateriales.Formularios
 
             SqlConnection Con = new SqlConnection(cConexionSQLMaestro);
             Con.Open();
-            SqlCommand cmd = new SqlCommand("spObtieneNombreArticulo", Con);
+            SqlCommand cmd = new SqlCommand("pa_spObtieneNombreArticulo", Con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
 
@@ -135,6 +136,8 @@ namespace SalidaMateriales.Formularios
             auxParametro.Direction = ParameterDirection.Output;
             auxParametro = cmd.Parameters.Add("@vchNombreArticuloSel", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
+            auxParametro = cmd.Parameters.Add("@vchUnidadMedida", SqlDbType.VarChar, 2);
+            auxParametro.Direction = ParameterDirection.Output;
 
             cmd.Parameters["@intIDArticulo"].Value = Convert.ToInt32(strIdArticulo);
             cmd.Parameters["@vchTipoArt"].Value = strTipoArticuloSel;
@@ -145,6 +148,7 @@ namespace SalidaMateriales.Formularios
             txtArticuloNombre.Text = cmd.Parameters["@vchNombreArticuloMostrar"].Value.ToString();
             strCodigoArticuloSel = cmd.Parameters["@vchCodArticulo"].Value.ToString();
             strNombreArticuloSel = cmd.Parameters["@vchNombreArticuloSel"].Value.ToString();
+            txtUnidadMedida.Text = cmd.Parameters["@vchUnidadMedida"].Value.ToString();
 
             cmd.Connection.Close(); cmd.Connection.Dispose();
             Con.Close(); Con.Dispose();
@@ -173,7 +177,7 @@ namespace SalidaMateriales.Formularios
                 rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Atención", "Debe ingresar cantidad a solicitar.", false, false);
                 return;
             }
-            dgSalidaMat.Rows.Add(strCodigoArticuloSel, strNombreArticuloSel, txtCantidad.Text.Trim(), strTipoArticuloSel);
+            dgSalidaMat.Rows.Add(strCodigoArticuloSel, strNombreArticuloSel, txtCantidad.Text.Trim(),txtUnidadMedida.Text, strTipoArticuloSel);
             btnEliminar.Enabled = true;
             LimpiaControlesIngreso();
             SumaCantidades();
@@ -209,6 +213,7 @@ namespace SalidaMateriales.Formularios
             cmbTipoArticulo.SelectedIndex = -1;
             txtArticuloNombre.Text = String.Empty;
             txtCantidad.Text = String.Empty;
+            txtUnidadMedida.Text = String.Empty;
 
             strCodigoArticuloSel = "";
             strNombreArticuloSel = "";
@@ -258,7 +263,7 @@ namespace SalidaMateriales.Formularios
 
             SqlConnection Con = new SqlConnection(cConexionSQLMaestro);
             Con.Open();
-            SqlCommand cmd = new SqlCommand("spObtieneNombrePlanta", Con);
+            SqlCommand cmd = new SqlCommand("pa_spObtieneNombrePlanta", Con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
 
@@ -332,13 +337,15 @@ namespace SalidaMateriales.Formularios
                     string strCodMaterial = "";
                     string strNombreMaterial = "";
                     decimal decCantidad = 0;
+                    string strUnidadMedida = "";
 
                     strCodMaterial = row.Cells["codigo_articulo"].Value.ToString();
                     strNombreMaterial = row.Cells["nombre_articulo"].Value.ToString();
                     decCantidad = Convert.ToDecimal(row.Cells["cant_articulo"].Value.ToString());
                     strTipoMaterial = row.Cells["tipo_material"].Value.ToString();
+                    strUnidadMedida = row.Cells["unidad_medida"].Value.ToString();
 
-                    if (InsertaDetalle(intIDEncabezado, strCodMaterial, strNombreMaterial, decCantidad, strTipoMaterial))
+                    if (InsertaDetalle(intIDEncabezado, strCodMaterial, strNombreMaterial, decCantidad, strTipoMaterial, strUnidadMedida))
                     {
                         respuestaEnc = true;
                     }
@@ -370,7 +377,8 @@ namespace SalidaMateriales.Formularios
                                     string CodigoMaterial,
                                     string NombreMaterial,
                                     decimal Cantidad,
-                                    string tipoMaterial)
+                                    string tipoMaterial,
+                                    string unidadMedida)
         {
             string auxRespuesta = "";
             bool RespuestaError = true;
@@ -386,6 +394,7 @@ namespace SalidaMateriales.Formularios
             auxParametro = cmd.Parameters.Add("@vchNombreMaterial", SqlDbType.VarChar, 100);
             auxParametro = cmd.Parameters.Add("@decCantidadMat", SqlDbType.Decimal);
             auxParametro = cmd.Parameters.Add("@chTipoMaterial", SqlDbType.Char, 2);
+            auxParametro = cmd.Parameters.Add("@vchUnidadMedida", SqlDbType.Char, 2);
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
 
@@ -394,6 +403,7 @@ namespace SalidaMateriales.Formularios
             cmd.Parameters["@vchNombreMaterial"].Value = NombreMaterial.Trim();
             cmd.Parameters["@decCantidadMat"].Value = Cantidad;
             cmd.Parameters["@chTipoMaterial"].Value = tipoMaterial;
+            cmd.Parameters["@vchUnidadMedida"].Value = unidadMedida;
 
             try
             {
