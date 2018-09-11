@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using SalidaMateriales.Formularios;
 using SalidaMateriales.Formularios.Parametros;
+using SalidaMateriales.Formularios.Materiales;
 
 
 
@@ -95,6 +96,21 @@ namespace SalidaMateriales.Formularios
         private void tsmSolicitudMaterialesForm_Click(object sender, EventArgs e)
         {
             fSalidaMateriales fAux = new fSalidaMateriales();           
+            sstPrincipal.Items["Proceso"].Text = "Configuración";
+            Rutinas.AplicarAccesoAFuncionalidad(fAux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            fAux.FormularioPadre = this;
+            fAux.ConexionCentral = cConexionSQLCentral;
+            fAux.ConexionSQLMaestro = cConexionSQLMaestro;
+            fAux.StartPosition = FormStartPosition.CenterScreen;
+            fAux.AutoScaleMode = AutoScaleMode.None;
+            fAux.MdiParent = this;
+            fAux.Show();
+            fAux.Focus();
+        }
+
+        private void ingresoMaterialesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fIngresoMaterial fAux = new fIngresoMaterial();
             sstPrincipal.Items["Proceso"].Text = "Configuración";
             Rutinas.AplicarAccesoAFuncionalidad(fAux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
             fAux.FormularioPadre = this;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using SalidaMateriales.Formularios.SalidaMateriales;
 
 namespace SalidaMateriales.Formularios
 {
@@ -28,6 +29,7 @@ namespace SalidaMateriales.Formularios
 
         private string cConexionCentral;
         public string ConexionCentral { set { cConexionCentral = value; } }
+        
 
         private SplitContainer cScoPrincipal;
         public SplitContainer ScoPrincipal { set { cScoPrincipal = value; } }
@@ -59,7 +61,7 @@ namespace SalidaMateriales.Formularios
 
         private void EstadoInicial()
         {
-            cmbTipoArticulo.SelectedIndex = -1;
+            
             txtArticuloNombre.Text = String.Empty;
             txtUnidadMedida.Text = String.Empty;
             txtCentroCostoDescrip.Text = String.Empty;
@@ -88,6 +90,7 @@ namespace SalidaMateriales.Formularios
 
             lblContMatPri.Text = "0";
             lblContadorEnvases.Text = "0";
+            Program.strIdArticuloBodegaSel = "";
         }
 
         private void SalidaMateriales_Load(object sender, EventArgs e)
@@ -108,23 +111,21 @@ namespace SalidaMateriales.Formularios
         }
 
         private void btnBuscarCodArticulo_Click(object sender, EventArgs e)
-        {
+        {          
 
-            if (cmbTipoArticulo.Text == "")
-                return;
-
-            if (strTipoArticuloSel == "MP")
-            {
-                strIdArticulo = rutinas.Buscar(cConexionSQLMaestro, "Artuculos", "m_Articulo", "idArticulo", "IDArticulo", "Codigo", "CodigoArticuloPaso", "", btnBuscarCodArticulo, true);
-            }
-            else if (strTipoArticuloSel == "E")
-            {
-                strIdArticulo = rutinas.Buscar(cConexionSQLMaestro, "Artuculos", "m_ArticuloEnvase", "idArticulo", "IDArticuloEnvase", "Codigo", "CodigoArticuloEnvase", "", btnBuscarCodArticulo, true);
-            }
-
-            SqlConnection Con = new SqlConnection(cConexionSQLMaestro);
+            fGrillaSolMateriales fAux = new fGrillaSolMateriales();          
+            rutinas.AplicarAccesoAFuncionalidad(fAux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            fAux.FormularioPadre = this;
+            fAux.ConexionCentral = cConexionCentral;
+            fAux.ConexionSQLMaestro = cConexionSQLMaestro;
+            fAux.StartPosition = FormStartPosition.CenterScreen;
+            fAux.AutoScaleMode = AutoScaleMode.None;          
+            fAux.ShowDialog(this);
+            fAux.Focus();                      
+           
+            SqlConnection Con = new SqlConnection(cConexionCentral);
             Con.Open();
-            SqlCommand cmd = new SqlCommand("pa_spObtieneNombreArticulo", Con);
+            SqlCommand cmd = new SqlCommand("spObtieneNombreArticulo", Con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
 
@@ -139,8 +140,8 @@ namespace SalidaMateriales.Formularios
             auxParametro = cmd.Parameters.Add("@vchUnidadMedida", SqlDbType.VarChar, 2);
             auxParametro.Direction = ParameterDirection.Output;
 
-            cmd.Parameters["@intIDArticulo"].Value = Convert.ToInt32(strIdArticulo);
-            cmd.Parameters["@vchTipoArt"].Value = strTipoArticuloSel;
+            cmd.Parameters["@intIDArticulo"].Value = Convert.ToInt32(Program.strIdArticuloBodegaSel);
+            cmd.Parameters["@vchTipoArt"].Value = Program.strTipoArticuloSelecc;
 
             cmd.ExecuteNonQuery();
 
@@ -157,18 +158,7 @@ namespace SalidaMateriales.Formularios
             btnAgregar.Enabled = true;
         }
 
-        private void cmbTipoArticulo_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (cmbTipoArticulo.Text == "Materias Primas")
-            {
-                strTipoArticuloSel = "MP";
-            }
-            else if (cmbTipoArticulo.Text == "Envases")
-            {
-                strTipoArticuloSel = "E";
-            }
-
-        }
+        
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -208,9 +198,8 @@ namespace SalidaMateriales.Formularios
             SumaCantidades();
         }
 
-        private void LimpiaControlesIngreso()
-        {
-            cmbTipoArticulo.SelectedIndex = -1;
+        private void LimpiaControlesIngreso()        {
+          
             txtArticuloNombre.Text = String.Empty;
             txtCantidad.Text = String.Empty;
             txtUnidadMedida.Text = String.Empty;

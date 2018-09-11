@@ -42,14 +42,19 @@
             this.lblPlantaRecibe = new System.Windows.Forms.Label();
             this.txtCentroCostoDescrip = new System.Windows.Forms.TextBox();
             this.lblCentroCosto = new System.Windows.Forms.Label();
-            this.cmbTipoArticulo = new System.Windows.Forms.ComboBox();
-            this.lblTipoArticulo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtArticuloNombre = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.dgSalidaMat = new System.Windows.Forms.DataGridView();
+            this.codigo_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad_medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDetalleSolicitud = new System.Windows.Forms.GroupBox();
+            this.txtUnidadMedida = new System.Windows.Forms.TextBox();
+            this.lblUnidadMedida = new System.Windows.Forms.Label();
             this.btnBuscarCodArticulo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -63,13 +68,6 @@
             this.gbContadorEnv = new System.Windows.Forms.GroupBox();
             this.lblTotalPedidoEnv = new System.Windows.Forms.Label();
             this.lblContadorEnvases = new System.Windows.Forms.Label();
-            this.lblUnidadMedida = new System.Windows.Forms.Label();
-            this.txtUnidadMedida = new System.Windows.Forms.TextBox();
-            this.codigo_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad_medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMat)).BeginInit();
             this.gbDetalleSolicitud.SuspendLayout();
@@ -177,32 +175,10 @@
             this.lblCentroCosto.TabIndex = 85;
             this.lblCentroCosto.Text = "Centro Costo";
             // 
-            // cmbTipoArticulo
-            // 
-            this.cmbTipoArticulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoArticulo.FormattingEnabled = true;
-            this.cmbTipoArticulo.Items.AddRange(new object[] {
-            "Materias Primas",
-            "Envases"});
-            this.cmbTipoArticulo.Location = new System.Drawing.Point(89, 24);
-            this.cmbTipoArticulo.Name = "cmbTipoArticulo";
-            this.cmbTipoArticulo.Size = new System.Drawing.Size(131, 25);
-            this.cmbTipoArticulo.TabIndex = 90;
-            this.cmbTipoArticulo.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoArticulo_SelectionChangeCommitted);
-            // 
-            // lblTipoArticulo
-            // 
-            this.lblTipoArticulo.AutoSize = true;
-            this.lblTipoArticulo.Location = new System.Drawing.Point(22, 27);
-            this.lblTipoArticulo.Name = "lblTipoArticulo";
-            this.lblTipoArticulo.Size = new System.Drawing.Size(61, 17);
-            this.lblTipoArticulo.TabIndex = 90;
-            this.lblTipoArticulo.Text = "Tipo Mat";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 64);
+            this.label2.Location = new System.Drawing.Point(6, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 91;
@@ -211,14 +187,14 @@
             // txtArticuloNombre
             // 
             this.txtArticuloNombre.Enabled = false;
-            this.txtArticuloNombre.Location = new System.Drawing.Point(123, 60);
+            this.txtArticuloNombre.Location = new System.Drawing.Point(123, 35);
             this.txtArticuloNombre.Name = "txtArticuloNombre";
             this.txtArticuloNombre.Size = new System.Drawing.Size(361, 25);
             this.txtArticuloNombre.TabIndex = 90;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(629, 61);
+            this.txtCantidad.Location = new System.Drawing.Point(629, 36);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(88, 25);
             this.txtCantidad.TabIndex = 93;
@@ -227,7 +203,7 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(563, 64);
+            this.lblCantidad.Location = new System.Drawing.Point(563, 39);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(60, 17);
             this.lblCantidad.TabIndex = 94;
@@ -267,7 +243,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgSalidaMat.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgSalidaMat.Location = new System.Drawing.Point(46, 300);
+            this.dgSalidaMat.Location = new System.Drawing.Point(46, 265);
             this.dgSalidaMat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgSalidaMat.MultiSelect = false;
             this.dgSalidaMat.Name = "dgSalidaMat";
@@ -275,16 +251,46 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
             this.dgSalidaMat.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgSalidaMat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSalidaMat.Size = new System.Drawing.Size(744, 210);
+            this.dgSalidaMat.Size = new System.Drawing.Size(744, 245);
             this.dgSalidaMat.TabIndex = 192;
             this.dgSalidaMat.TabStop = false;
+            // 
+            // codigo_articulo
+            // 
+            this.codigo_articulo.HeaderText = "Código";
+            this.codigo_articulo.Name = "codigo_articulo";
+            this.codigo_articulo.ReadOnly = true;
+            // 
+            // nombre_articulo
+            // 
+            this.nombre_articulo.HeaderText = "Nombre Artículo";
+            this.nombre_articulo.Name = "nombre_articulo";
+            this.nombre_articulo.ReadOnly = true;
+            this.nombre_articulo.Width = 400;
+            // 
+            // cant_articulo
+            // 
+            this.cant_articulo.HeaderText = "Cantidad";
+            this.cant_articulo.Name = "cant_articulo";
+            this.cant_articulo.ReadOnly = true;
+            // 
+            // unidad_medida
+            // 
+            this.unidad_medida.HeaderText = "UM";
+            this.unidad_medida.Name = "unidad_medida";
+            this.unidad_medida.ReadOnly = true;
+            // 
+            // tipo_material
+            // 
+            this.tipo_material.HeaderText = "Tipo";
+            this.tipo_material.Name = "tipo_material";
+            this.tipo_material.ReadOnly = true;
+            this.tipo_material.Visible = false;
             // 
             // gbDetalleSolicitud
             // 
             this.gbDetalleSolicitud.Controls.Add(this.txtUnidadMedida);
             this.gbDetalleSolicitud.Controls.Add(this.lblUnidadMedida);
-            this.gbDetalleSolicitud.Controls.Add(this.cmbTipoArticulo);
-            this.gbDetalleSolicitud.Controls.Add(this.lblTipoArticulo);
             this.gbDetalleSolicitud.Controls.Add(this.label2);
             this.gbDetalleSolicitud.Controls.Add(this.btnBuscarCodArticulo);
             this.gbDetalleSolicitud.Controls.Add(this.lblCantidad);
@@ -292,15 +298,32 @@
             this.gbDetalleSolicitud.Controls.Add(this.txtCantidad);
             this.gbDetalleSolicitud.Location = new System.Drawing.Point(46, 188);
             this.gbDetalleSolicitud.Name = "gbDetalleSolicitud";
-            this.gbDetalleSolicitud.Size = new System.Drawing.Size(744, 105);
+            this.gbDetalleSolicitud.Size = new System.Drawing.Size(744, 70);
             this.gbDetalleSolicitud.TabIndex = 195;
             this.gbDetalleSolicitud.TabStop = false;
             this.gbDetalleSolicitud.Text = "Detalle";
             // 
+            // txtUnidadMedida
+            // 
+            this.txtUnidadMedida.Enabled = false;
+            this.txtUnidadMedida.Location = new System.Drawing.Point(525, 36);
+            this.txtUnidadMedida.Name = "txtUnidadMedida";
+            this.txtUnidadMedida.Size = new System.Drawing.Size(32, 25);
+            this.txtUnidadMedida.TabIndex = 96;
+            // 
+            // lblUnidadMedida
+            // 
+            this.lblUnidadMedida.AutoSize = true;
+            this.lblUnidadMedida.Location = new System.Drawing.Point(490, 39);
+            this.lblUnidadMedida.Name = "lblUnidadMedida";
+            this.lblUnidadMedida.Size = new System.Drawing.Size(29, 17);
+            this.lblUnidadMedida.TabIndex = 95;
+            this.lblUnidadMedida.Text = "UM";
+            // 
             // btnBuscarCodArticulo
             // 
             this.btnBuscarCodArticulo.Image = global::SalidaMateriales.Properties.Resources.search;
-            this.btnBuscarCodArticulo.Location = new System.Drawing.Point(89, 60);
+            this.btnBuscarCodArticulo.Location = new System.Drawing.Point(89, 35);
             this.btnBuscarCodArticulo.Name = "btnBuscarCodArticulo";
             this.btnBuscarCodArticulo.Size = new System.Drawing.Size(28, 25);
             this.btnBuscarCodArticulo.TabIndex = 92;
@@ -450,55 +473,6 @@
             this.lblContadorEnvases.TabIndex = 198;
             this.lblContadorEnvases.Text = "0";
             // 
-            // lblUnidadMedida
-            // 
-            this.lblUnidadMedida.AutoSize = true;
-            this.lblUnidadMedida.Location = new System.Drawing.Point(490, 64);
-            this.lblUnidadMedida.Name = "lblUnidadMedida";
-            this.lblUnidadMedida.Size = new System.Drawing.Size(29, 17);
-            this.lblUnidadMedida.TabIndex = 95;
-            this.lblUnidadMedida.Text = "UM";
-            // 
-            // txtUnidadMedida
-            // 
-            this.txtUnidadMedida.Enabled = false;
-            this.txtUnidadMedida.Location = new System.Drawing.Point(525, 61);
-            this.txtUnidadMedida.Name = "txtUnidadMedida";
-            this.txtUnidadMedida.Size = new System.Drawing.Size(32, 25);
-            this.txtUnidadMedida.TabIndex = 96;
-            // 
-            // codigo_articulo
-            // 
-            this.codigo_articulo.HeaderText = "Código";
-            this.codigo_articulo.Name = "codigo_articulo";
-            this.codigo_articulo.ReadOnly = true;
-            // 
-            // nombre_articulo
-            // 
-            this.nombre_articulo.HeaderText = "Nombre Artículo";
-            this.nombre_articulo.Name = "nombre_articulo";
-            this.nombre_articulo.ReadOnly = true;
-            this.nombre_articulo.Width = 400;
-            // 
-            // cant_articulo
-            // 
-            this.cant_articulo.HeaderText = "Cantidad";
-            this.cant_articulo.Name = "cant_articulo";
-            this.cant_articulo.ReadOnly = true;
-            // 
-            // unidad_medida
-            // 
-            this.unidad_medida.HeaderText = "UM";
-            this.unidad_medida.Name = "unidad_medida";
-            this.unidad_medida.ReadOnly = true;
-            // 
-            // tipo_material
-            // 
-            this.tipo_material.HeaderText = "Tipo";
-            this.tipo_material.Name = "tipo_material";
-            this.tipo_material.ReadOnly = true;
-            this.tipo_material.Visible = false;
-            // 
             // fSalidaMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -546,8 +520,6 @@
         private System.Windows.Forms.TextBox txtCentroCostoDescrip;
         private System.Windows.Forms.Label lblCentroCosto;
         private System.Windows.Forms.Label lblPlantaRecibe;
-        private System.Windows.Forms.ComboBox cmbTipoArticulo;
-        private System.Windows.Forms.Label lblTipoArticulo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBuscarCodArticulo;
         private System.Windows.Forms.TextBox txtArticuloNombre;

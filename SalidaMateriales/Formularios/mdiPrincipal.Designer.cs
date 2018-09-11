@@ -49,6 +49,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ingresoMaterialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sstPrincipal.SuspendLayout();
             this.msPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +139,7 @@
             // 
             this.msPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmParametros,
+            this.materialesToolStripMenuItem,
             this.tsmSolicitudMateriales,
             this.finToolStripMenuItem});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -225,6 +228,21 @@
             this.tsmSalirSistema.Tag = "-";
             this.tsmSalirSistema.Text = "Salir del sistema";
             // 
+            // materialesToolStripMenuItem
+            // 
+            this.materialesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ingresoMaterialesToolStripMenuItem});
+            this.materialesToolStripMenuItem.Name = "materialesToolStripMenuItem";
+            this.materialesToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.materialesToolStripMenuItem.Text = "Materiales";
+            // 
+            // ingresoMaterialesToolStripMenuItem
+            // 
+            this.ingresoMaterialesToolStripMenuItem.Name = "ingresoMaterialesToolStripMenuItem";
+            this.ingresoMaterialesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.ingresoMaterialesToolStripMenuItem.Text = "Ingreso Materiales";
+            this.ingresoMaterialesToolStripMenuItem.Click += new System.EventHandler(this.ingresoMaterialesToolStripMenuItem_Click);
+            // 
             // mdiPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,5 +289,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmCerrarSesion;
         private System.Windows.Forms.ToolStripMenuItem tsmSalirSistema;
+        private System.Windows.Forms.ToolStripMenuItem materialesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ingresoMaterialesToolStripMenuItem;
     }
 }

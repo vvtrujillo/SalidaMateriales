@@ -13,7 +13,12 @@ namespace SalidaMateriales
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        [STAThread]
+        /// 
+
+        public static string strIdArticuloBodegaSel;
+        public static string strTipoArticuloSelecc;
+
+        [STAThread]        
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();

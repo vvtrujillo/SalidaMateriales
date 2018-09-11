@@ -127,6 +127,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Materiales\fIngresoMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Materiales\fIngresoMaterial.Designer.cs">
+      <DependentUpon>fIngresoMaterial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\mdiPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,12 @@
     </Compile>
     <Compile Include="Formularios\Parametros\fConfiguracion.Designer.cs">
       <DependentUpon>fConfiguracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\SalidaMateriales\fGrillaSolMateriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\SalidaMateriales\fGrillaSolMateriales.Designer.cs">
+      <DependentUpon>fGrillaSolMateriales.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SalidaMateriales\fSalidaMateriales.cs">
       <SubType>Form</SubType>
@@ -153,11 +165,17 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Formularios\Materiales\fIngresoMaterial.resx">
+      <DependentUpon>fIngresoMaterial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\mdiPrincipal.resx">
       <DependentUpon>mdiPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Parametros\fConfiguracion.resx">
       <DependentUpon>fConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\SalidaMateriales\fGrillaSolMateriales.resx">
+      <DependentUpon>fGrillaSolMateriales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SalidaMateriales\fSalidaMateriales.resx">
       <DependentUpon>fSalidaMateriales.cs</DependentUpon>
