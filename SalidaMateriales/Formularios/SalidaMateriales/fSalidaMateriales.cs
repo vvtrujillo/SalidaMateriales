@@ -28,8 +28,7 @@ namespace SalidaMateriales.Formularios
         public Form FormularioPadre { set { cFormularioPadre = value; } }
 
         private string cConexionCentral;
-        public string ConexionCentral { set { cConexionCentral = value; } }
-        
+        public string ConexionCentral { set { cConexionCentral = value; } }        
 
         private SplitContainer cScoPrincipal;
         public SplitContainer ScoPrincipal { set { cScoPrincipal = value; } }
@@ -121,8 +120,9 @@ namespace SalidaMateriales.Formularios
             fAux.StartPosition = FormStartPosition.CenterScreen;
             fAux.AutoScaleMode = AutoScaleMode.None;          
             fAux.ShowDialog(this);
-            fAux.Focus();                      
-           
+            fAux.Focus();
+            
+                       
             SqlConnection Con = new SqlConnection(cConexionCentral);
             Con.Open();
             SqlCommand cmd = new SqlCommand("spObtieneNombreArticulo", Con);
@@ -156,9 +156,7 @@ namespace SalidaMateriales.Formularios
 
             txtCantidad.Enabled = true;
             btnAgregar.Enabled = true;
-        }
-
-        
+        }        
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {

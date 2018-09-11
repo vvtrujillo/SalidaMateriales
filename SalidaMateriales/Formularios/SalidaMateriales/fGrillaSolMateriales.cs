@@ -125,7 +125,13 @@ namespace SalidaMateriales.Formularios.SalidaMateriales
 
         private void txtFiltroCodArt_TextChanged(object sender, EventArgs e)
         {
-
+            (dgSalidaMatSolicitud.DataSource as DataTable).DefaultView.RowFilter = string.Format("CodigoArticulo LIKE '{0}%' OR CodigoArticulo LIKE '% {0}%'", txtFiltroCodArt.Text);
         }
+
+        private void txtFiltroNombreArtBod_TextChanged(object sender, EventArgs e)
+        {
+            (dgSalidaMatSolicitud.DataSource as DataTable).DefaultView.RowFilter = string.Format("NombreCompleto LIKE '{0}%' OR NombreCompleto LIKE '% {0}%'", txtFiltroNombreArtBod.Text);
+        }
+      
     }
 }
