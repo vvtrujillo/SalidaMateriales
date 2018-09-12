@@ -564,6 +564,7 @@ namespace SalidaMateriales.Formularios
             auxParametro = cmd.Parameters.Add("@decCantidadReserva", SqlDbType.Decimal);
             auxParametro = cmd.Parameters.Add("@vchUsuarioRes", SqlDbType.VarChar,20);
             auxParametro = cmd.Parameters.Add("@vchMaquinaRes", SqlDbType. VarChar,30);
+            auxParametro = cmd.Parameters.Add("@intIdSolicitudEnc", SqlDbType.Int);
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
 
@@ -572,7 +573,8 @@ namespace SalidaMateriales.Formularios
             cmd.Parameters["@vchCodigoArticuloRes"].Value = CodigoArticuloReserva;
             cmd.Parameters["@decCantidadReserva"].Value = cantidadReserva;
             cmd.Parameters["@vchUsuarioRes"].Value = Properties.Settings.Default.Login;
-            cmd.Parameters["@vchMaquinaRes"].Value = Environment.MachineName;            
+            cmd.Parameters["@vchMaquinaRes"].Value = Environment.MachineName;
+            cmd.Parameters["@intIdSolicitudEnc"].Value = intIDEncabezado;
 
             try
             {
