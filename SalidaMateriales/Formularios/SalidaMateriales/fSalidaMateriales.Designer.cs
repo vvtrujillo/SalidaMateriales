@@ -35,8 +35,6 @@
             this.lblCodPlanta = new System.Windows.Forms.Label();
             this.cmbPlanta = new System.Windows.Forms.ComboBox();
             this.gbEncabezado = new System.Windows.Forms.GroupBox();
-            this.btnPlantaSol = new System.Windows.Forms.Button();
-            this.btnCentroCostoBusq = new System.Windows.Forms.Button();
             this.txtPlantaSol = new System.Windows.Forms.TextBox();
             this.txtPlanta = new System.Windows.Forms.TextBox();
             this.lblPlantaRecibe = new System.Windows.Forms.Label();
@@ -47,33 +45,37 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.dgSalidaMat = new System.Windows.Forms.DataGridView();
-            this.codigo_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad_medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDetalleSolicitud = new System.Windows.Forms.GroupBox();
             this.txtUnidadMedida = new System.Windows.Forms.TextBox();
             this.lblUnidadMedida = new System.Windows.Forms.Label();
-            this.btnBuscarCodArticulo = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.tsSalidaMateriales = new System.Windows.Forms.ToolStrip();
-            this.tsbCerrarSM = new System.Windows.Forms.ToolStripButton();
-            this.tsbGrabarSM = new System.Windows.Forms.ToolStripButton();
-            this.lblTitulo = new System.Windows.Forms.ToolStripLabel();
             this.lblSumPedido = new System.Windows.Forms.Label();
             this.lblContMatPri = new System.Windows.Forms.Label();
             this.gbContadorMP = new System.Windows.Forms.GroupBox();
             this.gbContadorEnv = new System.Windows.Forms.GroupBox();
             this.lblTotalPedidoEnv = new System.Windows.Forms.Label();
             this.lblContadorEnvases = new System.Windows.Forms.Label();
+            this.btnBuscarCodArticulo = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnPlantaSol = new System.Windows.Forms.Button();
+            this.btnCentroCostoBusq = new System.Windows.Forms.Button();
+            this.tsSalidaMateriales = new System.Windows.Forms.ToolStrip();
+            this.tsbCerrarSM = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelarSM = new System.Windows.Forms.ToolStripButton();
+            this.tsbGrabarSM = new System.Windows.Forms.ToolStripButton();
+            this.lblTitulo = new System.Windows.Forms.ToolStripLabel();
+            this.codigo_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant_articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad_medida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_articulo_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMat)).BeginInit();
             this.gbDetalleSolicitud.SuspendLayout();
-            this.tsSalidaMateriales.SuspendLayout();
             this.gbContadorMP.SuspendLayout();
             this.gbContadorEnv.SuspendLayout();
+            this.tsSalidaMateriales.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCodPlanta
@@ -112,26 +114,6 @@
             this.gbEncabezado.TabIndex = 85;
             this.gbEncabezado.TabStop = false;
             this.gbEncabezado.Text = "Encabezado";
-            // 
-            // btnPlantaSol
-            // 
-            this.btnPlantaSol.Image = global::SalidaMateriales.Properties.Resources.search;
-            this.btnPlantaSol.Location = new System.Drawing.Point(118, 85);
-            this.btnPlantaSol.Name = "btnPlantaSol";
-            this.btnPlantaSol.Size = new System.Drawing.Size(28, 25);
-            this.btnPlantaSol.TabIndex = 96;
-            this.btnPlantaSol.UseVisualStyleBackColor = true;
-            this.btnPlantaSol.Click += new System.EventHandler(this.btnPlantaSol_Click);
-            // 
-            // btnCentroCostoBusq
-            // 
-            this.btnCentroCostoBusq.Image = global::SalidaMateriales.Properties.Resources.search;
-            this.btnCentroCostoBusq.Location = new System.Drawing.Point(118, 54);
-            this.btnCentroCostoBusq.Name = "btnCentroCostoBusq";
-            this.btnCentroCostoBusq.Size = new System.Drawing.Size(28, 25);
-            this.btnCentroCostoBusq.TabIndex = 95;
-            this.btnCentroCostoBusq.UseVisualStyleBackColor = true;
-            this.btnCentroCostoBusq.Click += new System.EventHandler(this.btnCentroCostoBusq_Click);
             // 
             // txtPlantaSol
             // 
@@ -180,21 +162,21 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 17);
+            this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 91;
-            this.label2.Text = "Cod. Artículo";
+            this.label2.Text = "Artículo";
             // 
             // txtArticuloNombre
             // 
             this.txtArticuloNombre.Enabled = false;
-            this.txtArticuloNombre.Location = new System.Drawing.Point(123, 35);
+            this.txtArticuloNombre.Location = new System.Drawing.Point(100, 35);
             this.txtArticuloNombre.Name = "txtArticuloNombre";
             this.txtArticuloNombre.Size = new System.Drawing.Size(361, 25);
             this.txtArticuloNombre.TabIndex = 90;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(629, 36);
+            this.txtCantidad.Location = new System.Drawing.Point(606, 35);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(88, 25);
             this.txtCantidad.TabIndex = 93;
@@ -203,7 +185,7 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(563, 39);
+            this.lblCantidad.Location = new System.Drawing.Point(540, 39);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(60, 17);
             this.lblCantidad.TabIndex = 94;
@@ -234,7 +216,8 @@
             this.nombre_articulo,
             this.cant_articulo,
             this.unidad_medida,
-            this.tipo_material});
+            this.tipo_material,
+            this.id_articulo_bodega});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,38 +238,6 @@
             this.dgSalidaMat.TabIndex = 192;
             this.dgSalidaMat.TabStop = false;
             // 
-            // codigo_articulo
-            // 
-            this.codigo_articulo.HeaderText = "Código";
-            this.codigo_articulo.Name = "codigo_articulo";
-            this.codigo_articulo.ReadOnly = true;
-            // 
-            // nombre_articulo
-            // 
-            this.nombre_articulo.HeaderText = "Nombre Artículo";
-            this.nombre_articulo.Name = "nombre_articulo";
-            this.nombre_articulo.ReadOnly = true;
-            this.nombre_articulo.Width = 400;
-            // 
-            // cant_articulo
-            // 
-            this.cant_articulo.HeaderText = "Cantidad";
-            this.cant_articulo.Name = "cant_articulo";
-            this.cant_articulo.ReadOnly = true;
-            // 
-            // unidad_medida
-            // 
-            this.unidad_medida.HeaderText = "UM";
-            this.unidad_medida.Name = "unidad_medida";
-            this.unidad_medida.ReadOnly = true;
-            // 
-            // tipo_material
-            // 
-            this.tipo_material.HeaderText = "Tipo";
-            this.tipo_material.Name = "tipo_material";
-            this.tipo_material.ReadOnly = true;
-            this.tipo_material.Visible = false;
-            // 
             // gbDetalleSolicitud
             // 
             this.gbDetalleSolicitud.Controls.Add(this.txtUnidadMedida);
@@ -306,7 +257,7 @@
             // txtUnidadMedida
             // 
             this.txtUnidadMedida.Enabled = false;
-            this.txtUnidadMedida.Location = new System.Drawing.Point(525, 36);
+            this.txtUnidadMedida.Location = new System.Drawing.Point(502, 35);
             this.txtUnidadMedida.Name = "txtUnidadMedida";
             this.txtUnidadMedida.Size = new System.Drawing.Size(32, 25);
             this.txtUnidadMedida.TabIndex = 96;
@@ -314,106 +265,11 @@
             // lblUnidadMedida
             // 
             this.lblUnidadMedida.AutoSize = true;
-            this.lblUnidadMedida.Location = new System.Drawing.Point(490, 39);
+            this.lblUnidadMedida.Location = new System.Drawing.Point(467, 39);
             this.lblUnidadMedida.Name = "lblUnidadMedida";
             this.lblUnidadMedida.Size = new System.Drawing.Size(29, 17);
             this.lblUnidadMedida.TabIndex = 95;
             this.lblUnidadMedida.Text = "UM";
-            // 
-            // btnBuscarCodArticulo
-            // 
-            this.btnBuscarCodArticulo.Image = global::SalidaMateriales.Properties.Resources.search;
-            this.btnBuscarCodArticulo.Location = new System.Drawing.Point(89, 35);
-            this.btnBuscarCodArticulo.Name = "btnBuscarCodArticulo";
-            this.btnBuscarCodArticulo.Size = new System.Drawing.Size(28, 25);
-            this.btnBuscarCodArticulo.TabIndex = 92;
-            this.btnBuscarCodArticulo.UseVisualStyleBackColor = true;
-            this.btnBuscarCodArticulo.Click += new System.EventHandler(this.btnBuscarCodArticulo_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackgroundImage = global::SalidaMateriales.Properties.Resources.cancelar;
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(796, 353);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(49, 48);
-            this.btnEliminar.TabIndex = 194;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::SalidaMateriales.Properties.Resources.add;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(796, 300);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(49, 47);
-            this.btnAgregar.TabIndex = 193;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // tsSalidaMateriales
-            // 
-            this.tsSalidaMateriales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(198)))), ((int)(((byte)(205)))));
-            this.tsSalidaMateriales.BackgroundImage = global::SalidaMateriales.Properties.Resources.BarraBotones;
-            this.tsSalidaMateriales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tsSalidaMateriales.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCerrarSM,
-            this.tsbGrabarSM,
-            this.lblTitulo});
-            this.tsSalidaMateriales.Location = new System.Drawing.Point(0, 0);
-            this.tsSalidaMateriales.Name = "tsSalidaMateriales";
-            this.tsSalidaMateriales.Size = new System.Drawing.Size(856, 25);
-            this.tsSalidaMateriales.TabIndex = 82;
-            this.tsSalidaMateriales.Text = "toolStrip1";
-            this.tsSalidaMateriales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsSalidaMateriales_MouseDown);
-            // 
-            // tsbCerrarSM
-            // 
-            this.tsbCerrarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tsbCerrarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbCerrarSM.Image = global::SalidaMateriales.Properties.Resources.Cerrar_16;
-            this.tsbCerrarSM.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCerrarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrarSM.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.tsbCerrarSM.Name = "tsbCerrarSM";
-            this.tsbCerrarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.tsbCerrarSM.Size = new System.Drawing.Size(75, 25);
-            this.tsbCerrarSM.Text = "Cerrar";
-            this.tsbCerrarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbCerrarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbCerrarSM.Click += new System.EventHandler(this.tsbCerrarSM_Click);
-            // 
-            // tsbGrabarSM
-            // 
-            this.tsbGrabarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbGrabarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tsbGrabarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbGrabarSM.Image = global::SalidaMateriales.Properties.Resources.Grabar2;
-            this.tsbGrabarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGrabarSM.Margin = new System.Windows.Forms.Padding(0);
-            this.tsbGrabarSM.Name = "tsbGrabarSM";
-            this.tsbGrabarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.tsbGrabarSM.Size = new System.Drawing.Size(79, 25);
-            this.tsbGrabarSM.Text = "Grabar";
-            this.tsbGrabarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbGrabarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbGrabarSM.Click += new System.EventHandler(this.tsbGrabarSM_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(146, 22);
-            this.lblTitulo.Text = "Solicitud Materiales";
             // 
             // lblSumPedido
             // 
@@ -473,6 +329,177 @@
             this.lblContadorEnvases.TabIndex = 198;
             this.lblContadorEnvases.Text = "0";
             // 
+            // btnBuscarCodArticulo
+            // 
+            this.btnBuscarCodArticulo.Image = global::SalidaMateriales.Properties.Resources.search;
+            this.btnBuscarCodArticulo.Location = new System.Drawing.Point(64, 35);
+            this.btnBuscarCodArticulo.Name = "btnBuscarCodArticulo";
+            this.btnBuscarCodArticulo.Size = new System.Drawing.Size(28, 25);
+            this.btnBuscarCodArticulo.TabIndex = 92;
+            this.btnBuscarCodArticulo.UseVisualStyleBackColor = true;
+            this.btnBuscarCodArticulo.Click += new System.EventHandler(this.btnBuscarCodArticulo_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImage = global::SalidaMateriales.Properties.Resources.cancelar;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(796, 353);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(49, 48);
+            this.btnEliminar.TabIndex = 194;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::SalidaMateriales.Properties.Resources.add;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(796, 300);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(49, 47);
+            this.btnAgregar.TabIndex = 193;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnPlantaSol
+            // 
+            this.btnPlantaSol.Image = global::SalidaMateriales.Properties.Resources.search;
+            this.btnPlantaSol.Location = new System.Drawing.Point(118, 85);
+            this.btnPlantaSol.Name = "btnPlantaSol";
+            this.btnPlantaSol.Size = new System.Drawing.Size(28, 25);
+            this.btnPlantaSol.TabIndex = 96;
+            this.btnPlantaSol.UseVisualStyleBackColor = true;
+            this.btnPlantaSol.Click += new System.EventHandler(this.btnPlantaSol_Click);
+            // 
+            // btnCentroCostoBusq
+            // 
+            this.btnCentroCostoBusq.Image = global::SalidaMateriales.Properties.Resources.search;
+            this.btnCentroCostoBusq.Location = new System.Drawing.Point(118, 54);
+            this.btnCentroCostoBusq.Name = "btnCentroCostoBusq";
+            this.btnCentroCostoBusq.Size = new System.Drawing.Size(28, 25);
+            this.btnCentroCostoBusq.TabIndex = 95;
+            this.btnCentroCostoBusq.UseVisualStyleBackColor = true;
+            this.btnCentroCostoBusq.Click += new System.EventHandler(this.btnCentroCostoBusq_Click);
+            // 
+            // tsSalidaMateriales
+            // 
+            this.tsSalidaMateriales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(198)))), ((int)(((byte)(205)))));
+            this.tsSalidaMateriales.BackgroundImage = global::SalidaMateriales.Properties.Resources.BarraBotones;
+            this.tsSalidaMateriales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tsSalidaMateriales.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbCerrarSM,
+            this.tsbGrabarSM,
+            this.tsbCancelarSM,
+            this.lblTitulo});
+            this.tsSalidaMateriales.Location = new System.Drawing.Point(0, 0);
+            this.tsSalidaMateriales.Name = "tsSalidaMateriales";
+            this.tsSalidaMateriales.Size = new System.Drawing.Size(856, 25);
+            this.tsSalidaMateriales.TabIndex = 82;
+            this.tsSalidaMateriales.Text = "toolStrip1";
+            this.tsSalidaMateriales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsSalidaMateriales_MouseDown);
+            // 
+            // tsbCerrarSM
+            // 
+            this.tsbCerrarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.tsbCerrarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCerrarSM.Image = global::SalidaMateriales.Properties.Resources.Cerrar_16;
+            this.tsbCerrarSM.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbCerrarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrarSM.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.tsbCerrarSM.Name = "tsbCerrarSM";
+            this.tsbCerrarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.tsbCerrarSM.Size = new System.Drawing.Size(75, 25);
+            this.tsbCerrarSM.Text = "Cerrar";
+            this.tsbCerrarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCerrarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbCerrarSM.Click += new System.EventHandler(this.tsbCerrarSM_Click);
+            // 
+            // tsbCancelarSM
+            // 
+            this.tsbCancelarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCancelarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.tsbCancelarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCancelarSM.Image = global::SalidaMateriales.Properties.Resources.cancel_icon;
+            this.tsbCancelarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelarSM.Margin = new System.Windows.Forms.Padding(0);
+            this.tsbCancelarSM.Name = "tsbCancelarSM";
+            this.tsbCancelarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.tsbCancelarSM.Size = new System.Drawing.Size(88, 25);
+            this.tsbCancelarSM.Text = "Cancelar";
+            this.tsbCancelarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCancelarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbCancelarSM.Click += new System.EventHandler(this.tsbCancelarSM_Click);
+            // 
+            // tsbGrabarSM
+            // 
+            this.tsbGrabarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbGrabarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.tsbGrabarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbGrabarSM.Image = global::SalidaMateriales.Properties.Resources.Grabar2;
+            this.tsbGrabarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGrabarSM.Margin = new System.Windows.Forms.Padding(0);
+            this.tsbGrabarSM.Name = "tsbGrabarSM";
+            this.tsbGrabarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.tsbGrabarSM.Size = new System.Drawing.Size(79, 25);
+            this.tsbGrabarSM.Text = "Grabar";
+            this.tsbGrabarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbGrabarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbGrabarSM.Click += new System.EventHandler(this.tsbGrabarSM_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(146, 22);
+            this.lblTitulo.Text = "Solicitud Materiales";
+            // 
+            // codigo_articulo
+            // 
+            this.codigo_articulo.HeaderText = "Código";
+            this.codigo_articulo.Name = "codigo_articulo";
+            this.codigo_articulo.ReadOnly = true;
+            // 
+            // nombre_articulo
+            // 
+            this.nombre_articulo.HeaderText = "Nombre Artículo";
+            this.nombre_articulo.Name = "nombre_articulo";
+            this.nombre_articulo.ReadOnly = true;
+            this.nombre_articulo.Width = 400;
+            // 
+            // cant_articulo
+            // 
+            this.cant_articulo.HeaderText = "Cantidad";
+            this.cant_articulo.Name = "cant_articulo";
+            this.cant_articulo.ReadOnly = true;
+            // 
+            // unidad_medida
+            // 
+            this.unidad_medida.HeaderText = "UM";
+            this.unidad_medida.Name = "unidad_medida";
+            this.unidad_medida.ReadOnly = true;
+            // 
+            // tipo_material
+            // 
+            this.tipo_material.HeaderText = "Tipo";
+            this.tipo_material.Name = "tipo_material";
+            this.tipo_material.ReadOnly = true;
+            this.tipo_material.Visible = false;
+            // 
+            // id_articulo_bodega
+            // 
+            this.id_articulo_bodega.HeaderText = "idArticuloBodega";
+            this.id_articulo_bodega.Name = "id_articulo_bodega";
+            this.id_articulo_bodega.ReadOnly = true;
+            this.id_articulo_bodega.Visible = false;
+            // 
             // fSalidaMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -497,12 +524,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMat)).EndInit();
             this.gbDetalleSolicitud.ResumeLayout(false);
             this.gbDetalleSolicitud.PerformLayout();
-            this.tsSalidaMateriales.ResumeLayout(false);
-            this.tsSalidaMateriales.PerformLayout();
             this.gbContadorMP.ResumeLayout(false);
             this.gbContadorMP.PerformLayout();
             this.gbContadorEnv.ResumeLayout(false);
             this.gbContadorEnv.PerformLayout();
+            this.tsSalidaMateriales.ResumeLayout(false);
+            this.tsSalidaMateriales.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,10 +568,12 @@
         private System.Windows.Forms.Label lblContadorEnvases;
         private System.Windows.Forms.TextBox txtUnidadMedida;
         private System.Windows.Forms.Label lblUnidadMedida;
+        private System.Windows.Forms.ToolStripButton tsbCancelarSM;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo_articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cant_articulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn unidad_medida;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_articulo_bodega;
     }
 }

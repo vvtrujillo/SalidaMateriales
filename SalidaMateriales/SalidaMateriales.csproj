@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo_256x256.ico" />
+    <None Include="Resources\cancel-icon.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\cancelar.png" />
     <None Include="Resources\Eliminar_01.png" />

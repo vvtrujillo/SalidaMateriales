@@ -90,6 +90,8 @@ namespace SalidaMateriales.Formularios
             lblContMatPri.Text = "0";
             lblContadorEnvases.Text = "0";
             Program.strIdArticuloBodegaSel = "";
+            tsbCancelarSM.Visible = false;
+
         }
 
         private void SalidaMateriales_Load(object sender, EventArgs e)
@@ -165,10 +167,20 @@ namespace SalidaMateriales.Formularios
                 rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Atención", "Debe ingresar cantidad a solicitar.", false, false);
                 return;
             }
-            dgSalidaMat.Rows.Add(strCodigoArticuloSel, strNombreArticuloSel, txtCantidad.Text.Trim(),txtUnidadMedida.Text, strTipoArticuloSel);
-            btnEliminar.Enabled = true;
-            LimpiaControlesIngreso();
-            SumaCantidades();
+
+            if(ConsultaCantidadAgregar(Convert.ToDecimal(txtCantidad.Text.Trim())))
+            {
+                rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "La cantidad es mayor a lo que existe en Almacén.", false, false);
+                txtCantidad.Text = String.Empty;
+                txtCantidad.Focus();
+            }
+            else
+            {
+                dgSalidaMat.Rows.Add(strCodigoArticuloSel, strNombreArticuloSel, txtCantidad.Text.Trim(), txtUnidadMedida.Text, Program.strTipoArticuloSelecc, Program.strIdArticuloBodegaSel);
+                btnEliminar.Enabled = true;
+                LimpiaControlesIngreso();
+                SumaCantidades();
+            }            
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -218,6 +230,7 @@ namespace SalidaMateriales.Formularios
         {
             txtPlanta.Text = Convert.ToString(cmbPlanta.SelectedValue);
             intIdPlantaBodega = Convert.ToInt32(cmbPlanta.Text);
+            tsbCancelarSM.Visible = true;
         }
 
         private void btnCentroCostoBusq_Click(object sender, EventArgs e)
@@ -315,7 +328,7 @@ namespace SalidaMateriales.Formularios
             intIDEncabezado = Convert.ToInt32(cmd.Parameters["@intIdEncabezado"].Value.ToString());
 
             cmd.Connection.Close(); cmd.Connection.Dispose();
-            Con.Close(); Con.Dispose();
+            Con.Close(); Con.Dispose();            
 
             if (auxRespuesta == "")
             {
@@ -325,16 +338,18 @@ namespace SalidaMateriales.Formularios
                     string strNombreMaterial = "";
                     decimal decCantidad = 0;
                     string strUnidadMedida = "";
+                    int intIdArticuloBodega = 0;
 
                     strCodMaterial = row.Cells["codigo_articulo"].Value.ToString();
                     strNombreMaterial = row.Cells["nombre_articulo"].Value.ToString();
                     decCantidad = Convert.ToDecimal(row.Cells["cant_articulo"].Value.ToString());
                     strTipoMaterial = row.Cells["tipo_material"].Value.ToString();
                     strUnidadMedida = row.Cells["unidad_medida"].Value.ToString();
+                    intIdArticuloBodega = Convert.ToInt32(row.Cells["id_articulo_bodega"].Value.ToString());
 
-                    if (InsertaDetalle(intIDEncabezado, strCodMaterial, strNombreMaterial, decCantidad, strTipoMaterial, strUnidadMedida))
+                    if (InsertaDetalle(intIDEncabezado, strCodMaterial, strNombreMaterial, decCantidad, strTipoMaterial, strUnidadMedida, intIdArticuloBodega))
                     {
-                        respuestaEnc = true;
+                        respuestaEnc = true;                        
                     }
                     else
                     {
@@ -344,7 +359,7 @@ namespace SalidaMateriales.Formularios
 
                 if (respuestaEnc)
                 {
-                    rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Éxito", "Se realizo la inserción correctamente.", false, false);
+                    rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Éxito", "Se realizo la inserción correctamente.", false, false);                    
                 }
                 else
                 {
@@ -365,7 +380,8 @@ namespace SalidaMateriales.Formularios
                                     string NombreMaterial,
                                     decimal Cantidad,
                                     string tipoMaterial,
-                                    string unidadMedida)
+                                    string unidadMedida,
+                                    int intIdArtBod)
         {
             string auxRespuesta = "";
             bool RespuestaError = true;
@@ -412,8 +428,10 @@ namespace SalidaMateriales.Formularios
 
             if (auxRespuesta != "")
             {
-                rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Error", "Error en insertar Encabezado: " + auxRespuesta, false, false);
+                rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Error", "Error en insertar Detalle: " + auxRespuesta, false, false);
             }
+
+            IngresaArticuloBodegaReserva(Cantidad, CodigoMaterial, intIdArtBod);
 
             return RespuestaError;
         }
@@ -491,6 +509,95 @@ namespace SalidaMateriales.Formularios
 
             lblContMatPri.Text = Convert.ToString(SumaMP);
             lblContadorEnvases.Text = Convert.ToString(SumaE);
+        }
+
+        private void tsbCancelarSM_Click(object sender, EventArgs e)
+        {
+            EstadoInicial();
+        }
+
+        private bool ConsultaCantidadAgregar(decimal CantidadSolicitada)
+        {             
+            SqlConnection Con = new SqlConnection(cConexionCentral);
+            Con.Open();
+            SqlCommand cmd = new SqlCommand("spConsultaCantSolicitadaArt", Con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter auxParametro = null;
+
+            auxParametro = cmd.Parameters.Add("@decCantidadArtSol", SqlDbType.Decimal);
+            auxParametro = cmd.Parameters.Add("@vchCodArticuloSol", SqlDbType.VarChar,10);
+            auxParametro = cmd.Parameters.Add("@chSiNo", SqlDbType.Char,1);           
+            auxParametro.Direction = ParameterDirection.Output;            
+
+            cmd.Parameters["@decCantidadArtSol"].Value = CantidadSolicitada;
+            cmd.Parameters["@vchCodArticuloSol"].Value = strCodigoArticuloSel;
+            cmd.ExecuteNonQuery();
+
+            if (Convert.ToChar(cmd.Parameters["@chSiNo"].Value.ToString()) == 'S')
+            {                
+                cmd.Connection.Close(); cmd.Connection.Dispose();
+                Con.Close(); Con.Dispose();
+                return true;                     
+            }
+            else
+            {
+                cmd.Connection.Close(); cmd.Connection.Dispose();
+                Con.Close(); Con.Dispose();
+                return false;
+            }
+        }
+
+        private void IngresaArticuloBodegaReserva(decimal cantidadReserva,
+                                                  string CodigoArticuloReserva,
+                                                  int idArticuloBodega)
+        {
+            string auxRespuesta = "";
+            SqlConnection Con = new SqlConnection(cConexionCentral);
+            Con.Open();
+            SqlCommand cmd = new SqlCommand("spInsertaCantidadReservaAlm", Con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter auxParametro = null;
+
+            auxParametro = cmd.Parameters.Add("@intIdBodega", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@intIdArticuloBodegaRes", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@vchCodigoArticuloRes", SqlDbType.VarChar, 10);
+            auxParametro = cmd.Parameters.Add("@decCantidadReserva", SqlDbType.Decimal);
+            auxParametro = cmd.Parameters.Add("@vchUsuarioRes", SqlDbType.VarChar,20);
+            auxParametro = cmd.Parameters.Add("@vchMaquinaRes", SqlDbType. VarChar,30);
+            auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
+            auxParametro.Direction = ParameterDirection.Output;
+
+            cmd.Parameters["@intIdBodega"].Value = intIdPlantaBodega;
+            cmd.Parameters["@intIdArticuloBodegaRes"].Value = idArticuloBodega;
+            cmd.Parameters["@vchCodigoArticuloRes"].Value = CodigoArticuloReserva;
+            cmd.Parameters["@decCantidadReserva"].Value = cantidadReserva;
+            cmd.Parameters["@vchUsuarioRes"].Value = Properties.Settings.Default.Login;
+            cmd.Parameters["@vchMaquinaRes"].Value = Environment.MachineName;            
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                if (cmd.Parameters["@msgError"].Value.ToString() != "")
+                {
+                    auxRespuesta = "No se pudo insertar, " + cmd.Parameters["@msgError"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                auxRespuesta = "No se pudo insertar" + ex.ToString();
+            }
+
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            Con.Close(); Con.Dispose();
+
+            if (auxRespuesta == "")
+            {
+                rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "Se realizó la inserción.", false, false);
+            }
+            else
+            {
+                rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Error en la Operación.", auxRespuesta, false, false);
+            }
         }
     }
 }

@@ -97,12 +97,7 @@ namespace SalidaMateriales.Formularios.SalidaMateriales
             dgSalidaMatSolicitud.Refresh();
             if (dgSalidaMatSolicitud.RowCount > 0) { dgSalidaMatSolicitud.Rows[0].Selected = false; }
             dgSalidaMatSolicitud.ClearSelection();
-        }
-
-        private void tsbCerrarSM_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        }        
 
         private void tsListadoMaterialesBodega_MouseDown(object sender, MouseEventArgs e)
         {

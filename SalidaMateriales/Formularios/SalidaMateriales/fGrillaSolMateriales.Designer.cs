@@ -33,15 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgSalidaMatSolicitud = new System.Windows.Forms.DataGridView();
-            this.tsListadoMaterialesBodega = new System.Windows.Forms.ToolStrip();
-            this.tsbCerrarSM = new System.Windows.Forms.ToolStripButton();
-            this.lblTitulo = new System.Windows.Forms.ToolStripLabel();
             this.txtFiltroCodArt = new System.Windows.Forms.TextBox();
             this.txtFiltroNombreArtBod = new System.Windows.Forms.TextBox();
             this.lblFiltroCod = new System.Windows.Forms.Label();
             this.lblFiltroNombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMatSolicitud)).BeginInit();
-            this.tsListadoMaterialesBodega.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgSalidaMatSolicitud
@@ -72,7 +68,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgSalidaMatSolicitud.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgSalidaMatSolicitud.Location = new System.Drawing.Point(30, 98);
+            this.dgSalidaMatSolicitud.Location = new System.Drawing.Point(12, 64);
             this.dgSalidaMatSolicitud.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dgSalidaMatSolicitud.MultiSelect = false;
             this.dgSalidaMatSolicitud.Name = "dgSalidaMatSolicitud";
@@ -85,50 +81,10 @@
             this.dgSalidaMatSolicitud.TabStop = false;
             this.dgSalidaMatSolicitud.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSalidaMatSolicitud_CellContentDoubleClick);
             // 
-            // tsListadoMaterialesBodega
-            // 
-            this.tsListadoMaterialesBodega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(198)))), ((int)(((byte)(205)))));
-            this.tsListadoMaterialesBodega.BackgroundImage = global::SalidaMateriales.Properties.Resources.BarraBotones;
-            this.tsListadoMaterialesBodega.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tsListadoMaterialesBodega.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCerrarSM,
-            this.lblTitulo});
-            this.tsListadoMaterialesBodega.Location = new System.Drawing.Point(0, 0);
-            this.tsListadoMaterialesBodega.Name = "tsListadoMaterialesBodega";
-            this.tsListadoMaterialesBodega.Size = new System.Drawing.Size(440, 25);
-            this.tsListadoMaterialesBodega.TabIndex = 194;
-            this.tsListadoMaterialesBodega.Text = "toolStrip1";
-            this.tsListadoMaterialesBodega.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsListadoMaterialesBodega_MouseDown);
-            // 
-            // tsbCerrarSM
-            // 
-            this.tsbCerrarSM.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrarSM.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tsbCerrarSM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbCerrarSM.Image = global::SalidaMateriales.Properties.Resources.Cerrar_16;
-            this.tsbCerrarSM.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCerrarSM.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrarSM.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.tsbCerrarSM.Name = "tsbCerrarSM";
-            this.tsbCerrarSM.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.tsbCerrarSM.Size = new System.Drawing.Size(75, 25);
-            this.tsbCerrarSM.Text = "Cerrar";
-            this.tsbCerrarSM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbCerrarSM.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbCerrarSM.Click += new System.EventHandler(this.tsbCerrarSM_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(60, 22);
-            this.lblTitulo.Text = "Listado";
-            // 
             // txtFiltroCodArt
             // 
             this.txtFiltroCodArt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFiltroCodArt.Location = new System.Drawing.Point(30, 65);
+            this.txtFiltroCodArt.Location = new System.Drawing.Point(12, 31);
             this.txtFiltroCodArt.Name = "txtFiltroCodArt";
             this.txtFiltroCodArt.Size = new System.Drawing.Size(100, 25);
             this.txtFiltroCodArt.TabIndex = 195;
@@ -137,7 +93,7 @@
             // txtFiltroNombreArtBod
             // 
             this.txtFiltroNombreArtBod.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFiltroNombreArtBod.Location = new System.Drawing.Point(136, 65);
+            this.txtFiltroNombreArtBod.Location = new System.Drawing.Point(118, 31);
             this.txtFiltroNombreArtBod.Name = "txtFiltroNombreArtBod";
             this.txtFiltroNombreArtBod.Size = new System.Drawing.Size(182, 25);
             this.txtFiltroNombreArtBod.TabIndex = 196;
@@ -146,7 +102,7 @@
             // lblFiltroCod
             // 
             this.lblFiltroCod.AutoSize = true;
-            this.lblFiltroCod.Location = new System.Drawing.Point(30, 46);
+            this.lblFiltroCod.Location = new System.Drawing.Point(12, 11);
             this.lblFiltroCod.Name = "lblFiltroCod";
             this.lblFiltroCod.Size = new System.Drawing.Size(51, 17);
             this.lblFiltroCod.TabIndex = 197;
@@ -155,32 +111,29 @@
             // lblFiltroNombre
             // 
             this.lblFiltroNombre.AutoSize = true;
-            this.lblFiltroNombre.Location = new System.Drawing.Point(133, 45);
+            this.lblFiltroNombre.Location = new System.Drawing.Point(115, 9);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
             this.lblFiltroNombre.Size = new System.Drawing.Size(105, 17);
             this.lblFiltroNombre.TabIndex = 198;
-            this.lblFiltroNombre.Text = "Nombre Articulo";
+            this.lblFiltroNombre.Text = "Nombre Artículo";
             // 
             // fGrillaSolMateriales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 394);
+            this.ClientSize = new System.Drawing.Size(412, 361);
             this.Controls.Add(this.lblFiltroNombre);
             this.Controls.Add(this.lblFiltroCod);
             this.Controls.Add(this.txtFiltroNombreArtBod);
             this.Controls.Add(this.txtFiltroCodArt);
-            this.Controls.Add(this.tsListadoMaterialesBodega);
             this.Controls.Add(this.dgSalidaMatSolicitud);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "fGrillaSolMateriales";
-            this.Text = "fGrillaSolMateriales";
+            this.Text = "Listado";
             this.Load += new System.EventHandler(this.fGrillaSolMateriales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgSalidaMatSolicitud)).EndInit();
-            this.tsListadoMaterialesBodega.ResumeLayout(false);
-            this.tsListadoMaterialesBodega.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,9 +142,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgSalidaMatSolicitud;
-        private System.Windows.Forms.ToolStrip tsListadoMaterialesBodega;
-        private System.Windows.Forms.ToolStripButton tsbCerrarSM;
-        private System.Windows.Forms.ToolStripLabel lblTitulo;
         private System.Windows.Forms.TextBox txtFiltroCodArt;
         private System.Windows.Forms.TextBox txtFiltroNombreArtBod;
         private System.Windows.Forms.Label lblFiltroCod;
